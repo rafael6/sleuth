@@ -3,7 +3,9 @@
 __author__ = 'rafael'
 __version__ = '0.0.0'
 
-from sleuth.toolkit import Toolkit
+from toolkit import Toolkit
+
+# TODO place package in /usr/local/bin
 
 
 class NetElement:
@@ -59,9 +61,20 @@ class NetElement:
             print(e)
             exit()
 
+    def reset_attributes(self):
+        self._packet_loss = None
+        self._rtt = None
+        self._socket_result = None
+        self._url_result = None
+        self._dns_result = None
+        self._data = []
+
     def __str__(self):
         self.load_data()
-        return '\n\t'.join(self._data)
+        _results = '\n\t'.join(self._data)
+        #self._data.clear()
+        self.reset_attributes()
+        return _results
 
     def get_dns(self):
         self._dns_result =['DNS {} record: {}'.format(qtype.upper(), self.Toolkit.check_dns(
@@ -86,7 +99,7 @@ class NetElement:
         return self._socket_result
 
     def get_url(self):
-        self._url_result = ['URL {}: {}'.format(url, self.Toolkit.check_header(
+        self._url_result = ['URL {}: {}'.format(url, self.Toolkit.check_http_code(
             url)) for url in self.urls]
         return self._url_result
 

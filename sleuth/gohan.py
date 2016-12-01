@@ -3,8 +3,13 @@
 __author__ = 'rafael'
 __version__ = '0.0.0'
 
-from sleuth.toolkit import Toolkit
+from toolkit import Toolkit
 import validators
+import readline
+
+# TODO sudo pip3 install validators
+# TODO set internal and external DNS servers
+# TODO place package in /usr/local/bin
 
 external_dns = ('8.8.8.8',)
 intenal_dns = ('8.8.8.8',)
@@ -189,5 +194,3 @@ def main():
 if __name__ == "__main__":
     tool = Toolkit()
     main()
-
-

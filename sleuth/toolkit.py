@@ -30,6 +30,9 @@ import socket
 import subprocess
 import urllib.request
 
+# TODO sudo pip3 install dnspython3
+# TODO place package in /usr/local/bin
+
 
 class Toolkit:
 
@@ -451,7 +454,7 @@ class Toolkit:
 
 def main():
     tool = Toolkit()
-    print(tool.check_dns('google.com', ['8.8.8.8'], 'a'))
+    print(tool.check_dns('campus.com', ['8.8.8.8'], 'a'))
     print(tool.check_socket('google.com', 't80'))
     print(tool.check_ping('google.com', 3, 56))
     print(tool.check_http_code('https://yahoo.com'))
